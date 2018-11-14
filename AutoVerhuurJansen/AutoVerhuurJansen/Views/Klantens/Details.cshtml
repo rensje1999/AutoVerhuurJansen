@@ -1,0 +1,90 @@
+﻿@model AutoVerhuurJansen.Models.Klanten
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Klanten</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voornaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tussenvoegsel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tussenvoegsel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.achternaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.woonplaats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.woonplaats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telNr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telNr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wachtwoord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wachtwoord)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.klantId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

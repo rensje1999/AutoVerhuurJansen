@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Auto_Verhuur_JansenModelStoreContainer" CdmEntityContainer="Auto_Verhuur_JansenEntities">
+    <EntitySetMapping Name="categorie">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.categorie">
+        <MappingFragment StoreEntitySet="categorie">
+          <ScalarProperty Name="categorieId" ColumnName="categorieId" />
+          <ScalarProperty Name="categorieNaam" ColumnName="categorieNaam" />
+          <ScalarProperty Name="aantalPersonen" ColumnName="aantalPersonen" />
+          <ScalarProperty Name="aantalKoffers" ColumnName="aantalKoffers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klanten">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.Klanten">
+        <MappingFragment StoreEntitySet="Klanten">
+          <ScalarProperty Name="klantId" ColumnName="klantId" />
+          <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+          <ScalarProperty Name="tussenvoegsel" ColumnName="tussenvoegsel" />
+          <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="woonplaats" ColumnName="woonplaats" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="telNr" ColumnName="telNr" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="wachtwoord" ColumnName="wachtwoord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medewerkers">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.Medewerkers">
+        <MappingFragment StoreEntitySet="Medewerkers">
+          <ScalarProperty Name="medewerkerId" ColumnName="medewerkerId" />
+          <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+          <ScalarProperty Name="tussenvoegsel" ColumnName="tussenvoegsel" />
+          <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+          <ScalarProperty Name="afkorting" ColumnName="afkorting" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrijsHistorie">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.PrijsHistorie">
+        <MappingFragment StoreEntitySet="PrijsHistorie">
+          <ScalarProperty Name="prijscategorieId" ColumnName="prijscategorieId" />
+          <ScalarProperty Name="categorieId" ColumnName="categorieId" />
+          <ScalarProperty Name="beginDatum" ColumnName="beginDatum" />
+          <ScalarProperty Name="eindDatum" ColumnName="eindDatum" />
+          <ScalarProperty Name="prijsPerDag" ColumnName="prijsPerDag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Verhuren">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.Verhuren">
+        <MappingFragment StoreEntitySet="Verhuren">
+          <ScalarProperty Name="VerhuurId" ColumnName="VerhuurId" />
+          <ScalarProperty Name="klantId" ColumnName="klantId" />
+          <ScalarProperty Name="kenteken" ColumnName="kenteken" />
+          <ScalarProperty Name="medewerkerId" ColumnName="medewerkerId" />
+          <ScalarProperty Name="beginDatum" ColumnName="beginDatum" />
+          <ScalarProperty Name="eindDatum" ColumnName="eindDatum" />
+          <ScalarProperty Name="afgehandeld" ColumnName="afgehandeld" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voertuigen">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.Voertuigen">
+        <MappingFragment StoreEntitySet="Voertuigen">
+          <ScalarProperty Name="kenteken" ColumnName="kenteken" />
+          <ScalarProperty Name="categorieId" ColumnName="categorieId" />
+          <ScalarProperty Name="merk" ColumnName="merk" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="Auto_Verhuur_JansenModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="Auto_Verhuur_JansenModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

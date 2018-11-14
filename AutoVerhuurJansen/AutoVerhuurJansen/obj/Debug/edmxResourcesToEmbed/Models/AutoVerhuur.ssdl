@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Auto_Verhuur_JansenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="categorie">
+    <Key>
+      <PropertyRef Name="categorieId" />
+    </Key>
+    <Property Name="categorieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categorieNaam" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="aantalPersonen" Type="int" Nullable="false" />
+    <Property Name="aantalKoffers" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Klanten">
+    <Key>
+      <PropertyRef Name="klantId" />
+    </Key>
+    <Property Name="klantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="voornaam" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tussenvoegsel" Type="varchar" MaxLength="50" />
+    <Property Name="achternaam" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="adres" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="woonplaats" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="postcode" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="telNr" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="mail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="wachtwoord" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Medewerkers">
+    <Key>
+      <PropertyRef Name="medewerkerId" />
+    </Key>
+    <Property Name="medewerkerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="voornaam" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tussenvoegsel" Type="varchar" MaxLength="50" />
+    <Property Name="achternaam" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="afkorting" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrijsHistorie">
+    <Key>
+      <PropertyRef Name="prijscategorieId" />
+    </Key>
+    <Property Name="prijscategorieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categorieId" Type="int" Nullable="false" />
+    <Property Name="beginDatum" Type="date" Nullable="false" />
+    <Property Name="eindDatum" Type="date" />
+    <Property Name="prijsPerDag" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Verhuren">
+    <Key>
+      <PropertyRef Name="VerhuurId" />
+    </Key>
+    <Property Name="VerhuurId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="klantId" Type="int" Nullable="false" />
+    <Property Name="kenteken" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="medewerkerId" Type="int" />
+    <Property Name="beginDatum" Type="date" Nullable="false" />
+    <Property Name="eindDatum" Type="date" Nullable="false" />
+    <Property Name="afgehandeld" Type="bit" />
+  </EntityType>
+  <EntityType Name="Voertuigen">
+    <Key>
+      <PropertyRef Name="kenteken" />
+    </Key>
+    <Property Name="kenteken" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="categorieId" Type="int" Nullable="false" />
+    <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Auto_Verhuur_Jansen.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrijsHistorie_categorie">
+    <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+    <End Role="PrijsHistorie" Type="Self.PrijsHistorie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorie">
+        <PropertyRef Name="categorieId" />
+      </Principal>
+      <Dependent Role="PrijsHistorie">
+        <PropertyRef Name="categorieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Verhuren_Klanten">
+    <End Role="Klanten" Type="Self.Klanten" Multiplicity="1" />
+    <End Role="Verhuren" Type="Self.Verhuren" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klanten">
+        <PropertyRef Name="klantId" />
+      </Principal>
+      <Dependent Role="Verhuren">
+        <PropertyRef Name="klantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Verhuren_Voertuigen">
+    <End Role="Voertuigen" Type="Self.Voertuigen" Multiplicity="1" />
+    <End Role="Verhuren" Type="Self.Verhuren" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voertuigen">
+        <PropertyRef Name="kenteken" />
+      </Principal>
+      <Dependent Role="Verhuren">
+        <PropertyRef Name="kenteken" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voertuigen_categorie">
+    <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+    <End Role="Voertuigen" Type="Self.Voertuigen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorie">
+        <PropertyRef Name="categorieId" />
+      </Principal>
+      <Dependent Role="Voertuigen">
+        <PropertyRef Name="categorieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Auto_Verhuur_JansenModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categorie" EntityType="Self.categorie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Klanten" EntityType="Self.Klanten" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medewerkers" EntityType="Self.Medewerkers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrijsHistorie" EntityType="Self.PrijsHistorie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Verhuren" EntityType="Self.Verhuren" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Voertuigen" EntityType="Self.Voertuigen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+      <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrijsHistorie_categorie" Association="Self.FK_PrijsHistorie_categorie">
+      <End Role="categorie" EntitySet="categorie" />
+      <End Role="PrijsHistorie" EntitySet="PrijsHistorie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Verhuren_Klanten" Association="Self.FK_Verhuren_Klanten">
+      <End Role="Klanten" EntitySet="Klanten" />
+      <End Role="Verhuren" EntitySet="Verhuren" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Verhuren_Voertuigen" Association="Self.FK_Verhuren_Voertuigen">
+      <End Role="Voertuigen" EntitySet="Voertuigen" />
+      <End Role="Verhuren" EntitySet="Verhuren" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voertuigen_categorie" Association="Self.FK_Voertuigen_categorie">
+      <End Role="categorie" EntitySet="categorie" />
+      <End Role="Voertuigen" EntitySet="Voertuigen" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

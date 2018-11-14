@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AutoVerhuurJansen.Models.Verhuren>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<h2>
+    @Html.ActionLink("Huur een auto", "Create")
+</h2>
+<center>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Voertuigen.kenteken)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Klanten.voornaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beginDatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.eindDatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.afgehandeld)
+            </th>
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voertuigen.kenteken)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Klanten.voornaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.beginDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eindDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.afgehandeld)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VerhuurId }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.VerhuurId }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VerhuurId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+        }
+
+    </table>
+</center>

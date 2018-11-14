@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AutoVerhuurJansen.Models.Klanten>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tussenvoegsel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.woonplaats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.postcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telNr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wachtwoord)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.voornaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tussenvoegsel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.achternaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.woonplaats)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.postcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telNr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wachtwoord)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.klantId }, new { @class = "btn btn-primary" }) 
+        </td>
+    </tr>
+}
+
+</table>

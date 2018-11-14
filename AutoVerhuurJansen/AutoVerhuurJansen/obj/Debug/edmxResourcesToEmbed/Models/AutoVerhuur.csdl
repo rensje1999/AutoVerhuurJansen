@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Auto_Verhuur_JansenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="categorie">
+    <Key>
+      <PropertyRef Name="categorieId" />
+    </Key>
+    <Property Name="categorieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categorieNaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="aantalPersonen" Type="Int32" Nullable="false" />
+    <Property Name="aantalKoffers" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PrijsHistorie" Relationship="Self.FK_PrijsHistorie_categorie" FromRole="categorie" ToRole="PrijsHistorie" />
+    <NavigationProperty Name="Voertuigen" Relationship="Self.FK_Voertuigen_categorie" FromRole="categorie" ToRole="Voertuigen" />
+  </EntityType>
+  <EntityType Name="Klanten">
+    <Key>
+      <PropertyRef Name="klantId" />
+    </Key>
+    <Property Name="klantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="voornaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tussenvoegsel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="achternaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="woonplaats" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="postcode" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="telNr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="wachtwoord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Verhuren" Relationship="Self.FK_Verhuren_Klanten" FromRole="Klanten" ToRole="Verhuren" />
+  </EntityType>
+  <EntityType Name="Medewerkers">
+    <Key>
+      <PropertyRef Name="medewerkerId" />
+    </Key>
+    <Property Name="medewerkerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="voornaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tussenvoegsel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="achternaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="afkorting" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrijsHistorie">
+    <Key>
+      <PropertyRef Name="prijscategorieId" />
+    </Key>
+    <Property Name="prijscategorieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categorieId" Type="Int32" Nullable="false" />
+    <Property Name="beginDatum" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="eindDatum" Type="DateTime" Precision="0" />
+    <Property Name="prijsPerDag" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="categorie" Relationship="Self.FK_PrijsHistorie_categorie" FromRole="PrijsHistorie" ToRole="categorie" />
+  </EntityType>
+  <EntityType Name="Verhuren">
+    <Key>
+      <PropertyRef Name="VerhuurId" />
+    </Key>
+    <Property Name="VerhuurId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="klantId" Type="Int32" Nullable="false" />
+    <Property Name="kenteken" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="medewerkerId" Type="Int32" />
+    <Property Name="beginDatum" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="eindDatum" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="afgehandeld" Type="Boolean" />
+    <NavigationProperty Name="Klanten" Relationship="Self.FK_Verhuren_Klanten" FromRole="Verhuren" ToRole="Klanten" />
+    <NavigationProperty Name="Voertuigen" Relationship="Self.FK_Verhuren_Voertuigen" FromRole="Verhuren" ToRole="Voertuigen" />
+  </EntityType>
+  <EntityType Name="Voertuigen">
+    <Key>
+      <PropertyRef Name="kenteken" />
+    </Key>
+    <Property Name="kenteken" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="categorieId" Type="Int32" Nullable="false" />
+    <Property Name="merk" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="categorie" Relationship="Self.FK_Voertuigen_categorie" FromRole="Voertuigen" ToRole="categorie" />
+    <NavigationProperty Name="Verhuren" Relationship="Self.FK_Verhuren_Voertuigen" FromRole="Voertuigen" ToRole="Verhuren" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_PrijsHistorie_categorie">
+    <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+    <End Role="PrijsHistorie" Type="Self.PrijsHistorie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorie">
+        <PropertyRef Name="categorieId" />
+      </Principal>
+      <Dependent Role="PrijsHistorie">
+        <PropertyRef Name="categorieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voertuigen_categorie">
+    <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+    <End Role="Voertuigen" Type="Self.Voertuigen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorie">
+        <PropertyRef Name="categorieId" />
+      </Principal>
+      <Dependent Role="Voertuigen">
+        <PropertyRef Name="categorieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Verhuren_Klanten">
+    <End Role="Klanten" Type="Self.Klanten" Multiplicity="1" />
+    <End Role="Verhuren" Type="Self.Verhuren" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klanten">
+        <PropertyRef Name="klantId" />
+      </Principal>
+      <Dependent Role="Verhuren">
+        <PropertyRef Name="klantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Verhuren_Voertuigen">
+    <End Role="Voertuigen" Type="Self.Voertuigen" Multiplicity="1" />
+    <End Role="Verhuren" Type="Self.Verhuren" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voertuigen">
+        <PropertyRef Name="kenteken" />
+      </Principal>
+      <Dependent Role="Verhuren">
+        <PropertyRef Name="kenteken" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Auto_Verhuur_JansenEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categorie" EntityType="Self.categorie" />
+    <EntitySet Name="Klanten" EntityType="Self.Klanten" />
+    <EntitySet Name="Medewerkers" EntityType="Self.Medewerkers" />
+    <EntitySet Name="PrijsHistorie" EntityType="Self.PrijsHistorie" />
+    <EntitySet Name="Verhuren" EntityType="Self.Verhuren" />
+    <EntitySet Name="Voertuigen" EntityType="Self.Voertuigen" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+    <AssociationSet Name="FK_PrijsHistorie_categorie" Association="Self.FK_PrijsHistorie_categorie">
+      <End Role="categorie" EntitySet="categorie" />
+      <End Role="PrijsHistorie" EntitySet="PrijsHistorie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voertuigen_categorie" Association="Self.FK_Voertuigen_categorie">
+      <End Role="categorie" EntitySet="categorie" />
+      <End Role="Voertuigen" EntitySet="Voertuigen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Verhuren_Klanten" Association="Self.FK_Verhuren_Klanten">
+      <End Role="Klanten" EntitySet="Klanten" />
+      <End Role="Verhuren" EntitySet="Verhuren" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Verhuren_Voertuigen" Association="Self.FK_Verhuren_Voertuigen">
+      <End Role="Voertuigen" EntitySet="Voertuigen" />
+      <End Role="Verhuren" EntitySet="Verhuren" />
+    </AssociationSet>
+    <EntitySet Name="C__MigrationHistory" EntityType="Auto_Verhuur_JansenModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Auto_Verhuur_JansenModel.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Auto_Verhuur_JansenModel.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Auto_Verhuur_JansenModel.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Auto_Verhuur_JansenModel.AspNetUsers" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Auto_Verhuur_JansenModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Auto_Verhuur_JansenModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Auto_Verhuur_JansenModel.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Auto_Verhuur_JansenModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Auto_Verhuur_JansenModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Auto_Verhuur_JansenModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Auto_Verhuur_JansenModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Auto_Verhuur_JansenModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Auto_Verhuur_JansenModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="Auto_Verhuur_JansenModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Auto_Verhuur_JansenModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="Auto_Verhuur_JansenModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Auto_Verhuur_JansenModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="Auto_Verhuur_JansenModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+    <End Type="Auto_Verhuur_JansenModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+  </Association>
+</Schema>
